@@ -8,7 +8,10 @@ function Footer() {
           </span>
           <span className="font-semibold text-slate-700">GlCnB (Global C&amp;B)</span>
         </div>
-        <p>© {new Date().getFullYear()} GlCnB. 해외 유학생을 위한 여정 관리 플랫폼.</p>
+        <p>
+          © {new Date().getFullYear()} GlCnB. 해외 유학생의 출국 전부터 인생
+          2막까지 함께하는 여정 관리 플랫폼.
+        </p>
       </div>
     </footer>
   )

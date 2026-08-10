@@ -61,6 +61,19 @@ function JourneySection() {
             />
           ))}
         </div>
+
+        <div className="mt-4 rounded-2xl border border-dashed border-indigo-200 bg-indigo-50/50 p-6 text-center sm:p-8">
+          <span className="inline-block rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-600">
+            Coming Soon
+          </span>
+          <h3 className="mt-3 text-lg font-bold text-slate-900">
+            여정은 취업 이후에도 계속됩니다
+          </h3>
+          <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600">
+            GlCnB는 귀국 후 창업 지원부터 인생 2막 설계까지, 유학생의 전체
+            생애주기를 함께하는 플랫폼으로 확장하고 있습니다.
+          </p>
+        </div>
       </div>
     </section>
   )

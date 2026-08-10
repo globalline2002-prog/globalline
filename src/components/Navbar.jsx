@@ -1,5 +1,6 @@
 const navLinks = [
   { label: '서비스 소개', href: '#journey' },
+  { label: '학습 콘텐츠', href: '#lms' },
   { label: '이용 방법', href: '#how-it-works' },
   { label: '문의하기', href: '#contact' },
 ]
