@@ -15,7 +15,7 @@ function Hero() {
         </span>
 
         <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
-          출국부터 정주까지,
+          유학준비부터 정주까지,
           <br />
           <span className="text-indigo-400">한 사람을 위한 로드맵</span>
         </h1>
