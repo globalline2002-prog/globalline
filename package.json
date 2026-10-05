@@ -10,7 +10,8 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test:smoke": "node scripts/smoke-test.mjs"
+    "test:smoke": "node scripts/smoke-test.mjs",
+    "user": "node server/cli.js"
   },
   "dependencies": {
     "qrcode": "^1.5.4",

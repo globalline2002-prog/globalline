@@ -19,8 +19,8 @@ export const platform = {
 const fallbacks = {
   lms: '#/consult/form',
   levelTest: '#/consult/form',
-  partner: '#/consult/partners',
-  staff: '#/admin', // 내장 CRM 관리 화면
+  partner: '#/admin', // 내장 CRM (유학원 계정)
+  staff: '#/admin', // 내장 CRM (직원 계정)
   institution: '#/consult/institutions',
 }
 
@@ -35,7 +35,7 @@ const urls = {
 // { href, external, ready } — ready 가 false 면 화면에 '오픈 예정'으로 표시합니다.
 export function platformLink(key) {
   if (urls[key]) return { href: urls[key], external: true, ready: true }
-  return { href: fallbacks[key], external: false, ready: key === 'staff' }
+  return { href: fallbacks[key], external: false, ready: key === 'staff' || key === 'partner' }
 }
 
 export function linkProps(link) {
