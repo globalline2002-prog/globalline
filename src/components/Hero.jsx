@@ -1,43 +1,69 @@
+import { languages, useLang } from '../lang'
+import { href } from '../router'
+import Icon from './Icon'
+
 function Hero() {
+  const { c } = useLang()
+  const h = c.hero
+  const chips = [languages.map((l) => l.label).join(' · '), ...h.chips]
+
   return (
-    <section id="top" className="relative overflow-hidden bg-slate-900">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-30"
-        style={{
-          backgroundImage:
-            'radial-gradient(circle at 20% 20%, rgba(99,102,241,0.5), transparent 40%), radial-gradient(circle at 80% 0%, rgba(56,189,248,0.4), transparent 45%)',
-        }}
-      />
+    <section className="overflow-hidden bg-surface">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:py-20">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-extrabold tracking-wider text-brand-600">
+            <Icon name="cap" className="h-4 w-4" />
+            {h.badge}
+          </span>
+          <h1 className="mt-7 text-[2.6rem] font-extrabold leading-[1.15] tracking-tight text-ink sm:text-6xl">
+            {h.title1}
+            <br />
+            <span className="text-brand-600">{h.title2}</span>
+          </h1>
+          <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-soft sm:text-xl">{h.desc}</p>
 
-      <div className="relative mx-auto flex max-w-6xl flex-col items-center px-6 py-24 text-center sm:py-32">
-        <span className="mb-6 inline-flex items-center rounded-full border border-indigo-400/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300">
-          Global C&amp;B · 해외 유학생 여정 관리 플랫폼
-        </span>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <a
+              href={href('consult/form')}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-4 font-bold text-white shadow-lg shadow-brand-600/30 transition hover:bg-brand-700"
+            >
+              {h.ctaConsult}
+              <Icon name="arrow" className="h-4 w-4" />
+            </a>
+            <a
+              href={href('pre-departure/compare')}
+              className="inline-flex items-center rounded-full border-2 border-ink/80 bg-white px-6 py-4 font-bold text-ink transition hover:bg-ink hover:text-white"
+            >
+              {h.ctaCompare}
+            </a>
+          </div>
 
-        <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
-          유학준비부터 정주까지,
-          <br />
-          <span className="text-indigo-400">한 사람을 위한 로드맵</span>
-        </h1>
+          <ul className="mt-8 flex flex-wrap gap-2.5">
+            {chips.map((chip) => (
+              <li key={chip} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-ink-soft">
+                <Icon name="check" className="h-4 w-4 text-brand-600" strokeWidth={2.5} />
+                {chip}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-        <p className="mt-6 max-w-2xl text-lg text-slate-300 sm:text-xl">
-          GlCnB는 출국 전 준비부터 어학연수, 학부진학, 취업·정주까지
-          유학생의 전 과정을 4단계로 관리하는 통합 플랫폼입니다.
-        </p>
-
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-          <a
-            href="#journey"
-            className="rounded-full bg-indigo-500 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:bg-indigo-400"
-          >
-            4단계 여정 살펴보기
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full border border-slate-600 px-8 py-3 text-base font-semibold text-slate-200 transition hover:border-slate-400 hover:text-white"
-          >
-            무료 상담 신청
-          </a>
+        <div className="relative pb-16 pr-3 pt-3 sm:pr-4 sm:pt-4">
+          <div className="absolute inset-0 bottom-12 left-10 rounded-[2.5rem] bg-lime-brand" />
+          <img
+            src="/images/hero-students.webp"
+            alt=""
+            className="relative aspect-[6/5] w-full rounded-[2rem] object-cover shadow-xl"
+          />
+          <div className="absolute bottom-0 left-4 right-8 flex items-center gap-4 rounded-3xl bg-white p-5 shadow-xl sm:left-6">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-lime-soft text-ink">
+              <Icon name="cap" className="h-6 w-6" />
+            </span>
+            <div>
+              <p className="font-extrabold text-ink">{h.cardTitle}</p>
+              <p className="mt-0.5 text-sm text-ink-soft">{h.cardSub}</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

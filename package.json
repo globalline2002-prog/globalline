@@ -5,11 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "node server/index.js",
+    "start": "vite build && node server/index.js",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:smoke": "node scripts/smoke-test.mjs"
   },
   "dependencies": {
+    "qrcode": "^1.5.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
@@ -21,5 +25,8 @@
     "oxlint": "^1.75.0",
     "tailwindcss": "^4.3.3",
     "vite": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=20.12"
   }
 }
