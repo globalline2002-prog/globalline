@@ -90,7 +90,10 @@ npm run dev      # 화면 개발 서버
 npm run server   # 내장 CRM 서버 (API)
 npm start        # 빌드 + 서버 실행 (운영)
 npm run lint
+npm run test:smoke  # 빌드 후 서버·API 스모크 테스트
 ```
+
+PR과 `main` 푸시마다 GitHub Actions(`.github/workflows/ci.yml`)가 lint → build → 스모크 테스트를 자동 실행합니다.
 
 ## 운영 전 확인할 것
 

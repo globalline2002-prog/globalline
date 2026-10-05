@@ -9,7 +9,8 @@
     "start": "vite build && node server/index.js",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:smoke": "node scripts/smoke-test.mjs"
   },
   "dependencies": {
     "qrcode": "^1.5.4",
