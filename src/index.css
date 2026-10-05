@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+
+  --color-brand-50: #eef1ff;
+  --color-brand-100: #dfe4ff;
+  --color-brand-200: #c3ccff;
+  --color-brand-500: #4f5ff0;
+  --color-brand-600: #3a48e6;
+  --color-brand-700: #2f39c4;
+  --color-brand-900: #1c2170;
+
+  --color-lime-soft: #eaf8b4;
+  --color-lime-brand: #d4f37a;
+  --color-lime-deep: #a8d93a;
+
+  --color-ink: #1d2233;
+  --color-ink-soft: #4a5068;
+  --color-surface: #f1f5fd;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 1.5rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: #ffffff;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+}
