@@ -72,6 +72,14 @@ try {
   const csv = await (await admin('/leads.csv')).text()
   check('CSV 내보내기', csv.includes('Smoke Test') && csv.includes('ST-01'))
 
+  // 헤더 조작으로 접수 제한을 우회할 수 없어야 합니다 (위에서 3건 사용, 한도 10건)
+  let limited = false
+  for (let i = 0; i < 10; i++) {
+    const r = await fetch(`${BASE}/api/leads`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Forwarded-For': `10.0.0.${i}` }, body: JSON.stringify({ ...lead, website: 'bot' }) })
+    if (r.status === 429) limited = true
+  }
+  check('IP당 접수 제한 (X-Forwarded-For 조작 무시)', limited)
+
   const traversal = await fetch(`${BASE}/..%2fpackage.json`)
   check('경로 탐색 차단', traversal.status === 403, `status ${traversal.status}`)
 } catch (err) {

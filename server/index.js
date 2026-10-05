@@ -77,6 +77,17 @@ function isAdmin(req) {
   return given.length === expected.length && timingSafeEqual(given, expected)
 }
 
+// 리버스 프록시(nginx·클라우드 로드밸런서) 뒤에서만 X-Forwarded-For 를 신뢰합니다.
+// 그 외에는 누구나 헤더를 조작해 접수 제한을 우회할 수 있습니다.
+const TRUST_PROXY = process.env.TRUST_PROXY === '1'
+function clientIp(req) {
+  if (TRUST_PROXY) {
+    const forwarded = req.headers['x-forwarded-for']?.split(',')[0].trim()
+    if (forwarded) return forwarded
+  }
+  return req.socket.remoteAddress
+}
+
 // IP당 10분에 10건까지 접수
 const hits = new Map()
 function rateLimited(ip) {
@@ -124,7 +135,7 @@ async function handleApi(req, res, url) {
 
   if (pathname === '/api/leads' && method === 'POST') {
     const cors = corsHeaders(req)
-    const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress
+    const ip = clientIp(req)
     if (rateLimited(ip)) return send(res, 429, { error: 'too many requests' }, cors)
     const body = await readJson(req)
     if (body.website) return send(res, 201, { ok: true }, cors) // 스팸 봇: 저장하지 않음
