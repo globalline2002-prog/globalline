@@ -5,6 +5,7 @@ import Icon from './components/Icon'
 import { useLang } from './lang'
 import { captureAttribution } from './lib/crm'
 import AboutPage from './pages/AboutPage'
+import AdminPage from './pages/AdminPage'
 import ConsultPage from './pages/ConsultPage'
 import HomePage from './pages/HomePage'
 import NewsPage from './pages/NewsPage'
@@ -26,6 +27,8 @@ function Page({ page }) {
       return <StagePage key={page} stage={page} />
     case 'news':
       return <NewsPage />
+    case 'admin':
+      return <AdminPage />
     default:
       return <HomePage />
   }
@@ -46,7 +49,7 @@ function App() {
         <Page page={page} />
       </main>
       <Footer />
-      {page !== 'consult' && (
+      {page !== 'consult' && page !== 'admin' && (
         <a
           href={href('consult/form')}
           className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-3.5 font-extrabold text-white shadow-xl shadow-brand-600/30 ring-4 ring-lime-brand/70 transition hover:bg-brand-700"

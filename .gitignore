@@ -26,3 +26,6 @@ dist-ssr
 # local env
 .env
 .env.local
+
+# 내장 CRM 데이터 (개인정보 — 커밋 금지)
+data/

@@ -2,7 +2,7 @@ import ConsultForm from '../components/ConsultForm'
 import { Institutions, LinkGenerator, Partners, Portals, Referral, Sales } from '../components/Growth'
 import Icon from '../components/Icon'
 import { PageHeader } from '../components/Ui'
-import { platform } from '../config'
+import { platform, platformLink } from '../config'
 import { useLang } from '../lang'
 
 function ConsultPage() {
@@ -11,7 +11,7 @@ function ConsultPage() {
   const contacts = [
     { icon: 'mail', label: t.sideEmail, href: `mailto:${platform.contactEmail}`, sub: platform.contactEmail },
     platform.kakaoChannelUrl && { icon: 'chat', label: t.sideKakao, href: platform.kakaoChannelUrl, sub: 'KakaoTalk' },
-    { icon: 'book', label: t.sideLevel, href: platform.levelTestUrl, sub: 'LMS' },
+    platformLink('levelTest').ready && { icon: 'book', label: t.sideLevel, href: platform.levelTestUrl, sub: 'LMS' },
   ].filter(Boolean)
 
   return (

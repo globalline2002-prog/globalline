@@ -33,7 +33,6 @@ function ConsultForm() {
   const t = c.consult
   const [form, setForm] = useState(initialForm)
   const [status, setStatus] = useState('idle') // idle | sending | done | error
-  const [demo, setDemo] = useState(false)
   const [error, setError] = useState('')
   const attr = getAttribution()
   const hasAttrCode = Boolean(attr.ref || attr.staff || attr.partner)
@@ -66,12 +65,11 @@ function ConsultForm() {
     setStatus('sending')
     try {
       const { website: _honeypot, consent, ...rest } = form
-      const res = await submitLead({
+      await submitLead({
         ...rest,
         consent: consent ? new Date().toISOString() : null,
         preferredLanguage: languages.find((l) => l.code === lang)?.label,
       })
-      setDemo(res.demo)
       setStatus('done')
     } catch {
       setStatus('error')
@@ -85,7 +83,6 @@ function ConsultForm() {
           <Icon name="check" className="h-8 w-8" strokeWidth={3} />
         </span>
         <p className="mt-5 text-xl font-extrabold text-ink">{t.success}</p>
-        {demo && <p className="mt-3 max-w-md text-sm text-ink-soft">{t.demoNote}</p>}
         <button
           onClick={() => {
             setForm(initialForm())

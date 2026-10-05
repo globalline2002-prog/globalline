@@ -1,6 +1,6 @@
 import QRCode from 'qrcode'
 import { useEffect, useState } from 'react'
-import { platform } from '../config'
+import { linkProps, platformLink } from '../config'
 import { useLang } from '../lang'
 import { buildTrackingLink } from '../lib/crm'
 import { setPrefill } from '../lib/prefill'
@@ -8,12 +8,6 @@ import { href } from '../router'
 import Icon from './Icon'
 import { CheckItem, SectionHead } from './Ui'
 
-const portalUrls = {
-  lms: platform.lmsUrl,
-  partner: platform.partnerPortalUrl,
-  staff: platform.staffCrmUrl,
-  institution: platform.institutionPortalUrl,
-}
 const portalIcons = { lms: 'book', partner: 'globe', staff: 'chart', institution: 'building' }
 
 export function Portals() {
@@ -24,25 +18,29 @@ export function Portals() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHead eyebrow={p.eyebrow} title={p.title} desc={p.desc} />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {p.items.map((it) => (
-            <a
-              key={it.key}
-              href={portalUrls[it.key]}
-              target="_blank"
-              rel="noreferrer"
-              className="group flex flex-col rounded-3xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:border-brand-600 hover:shadow-lg"
-            >
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
-                <Icon name={portalIcons[it.key]} className="h-6 w-6" />
-              </span>
-              <p className="mt-4 text-lg font-extrabold text-ink">{it.title}</p>
-              <p className="mt-2 flex-1 text-sm text-ink-soft">{it.desc}</p>
-              <span className="mt-5 inline-flex items-center gap-1.5 font-bold text-brand-600">
-                {it.cta}
-                <Icon name="arrow" className="h-4 w-4 transition group-hover:translate-x-1" />
-              </span>
-            </a>
-          ))}
+          {p.items.map((it) => {
+            const link = platformLink(it.key)
+            return (
+              <a
+                key={it.key}
+                {...linkProps(link)}
+                className="group relative flex flex-col rounded-3xl border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:border-brand-600 hover:shadow-lg"
+              >
+                {!link.ready && (
+                  <span className="absolute right-5 top-5 rounded-full bg-lime-soft px-2.5 py-1 text-xs font-bold text-ink">{c.ui.comingSoon}</span>
+                )}
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
+                  <Icon name={portalIcons[it.key]} className="h-6 w-6" />
+                </span>
+                <p className="mt-4 text-lg font-extrabold text-ink">{it.title}</p>
+                <p className="mt-2 flex-1 text-sm text-ink-soft">{it.desc}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 font-bold text-brand-600">
+                  {link.ready ? it.cta : c.ui.comingSoonCta}
+                  <Icon name="arrow" className="h-4 w-4 transition group-hover:translate-x-1" />
+                </span>
+              </a>
+            )
+          })}
         </div>
       </div>
     </section>
@@ -219,7 +217,7 @@ export function Sales() {
             </div>
           ))}
         </div>
-        <a href={platform.staffCrmUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 font-bold text-brand-600 hover:underline">
+        <a {...linkProps(platformLink('staff'))} className="mt-8 inline-flex items-center gap-2 font-bold text-brand-600 hover:underline">
           {c.portals.items[2].cta}
           <Icon name="arrow" className="h-4 w-4" />
         </a>
@@ -264,9 +262,11 @@ export function Partners() {
             {p.cta}
             <Icon name="arrow" className="h-4 w-4" />
           </a>
-          <a href={platform.partnerPortalUrl} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-full border-2 border-ink/80 px-6 py-3.5 font-bold hover:bg-ink hover:text-white">
-            {c.portals.items[1].cta}
-          </a>
+          {platformLink('partner').ready && (
+            <a {...linkProps(platformLink('partner'))} className="inline-flex items-center rounded-full border-2 border-ink/80 px-6 py-3.5 font-bold hover:bg-ink hover:text-white">
+              {c.portals.items[1].cta}
+            </a>
+          )}
         </div>
       </div>
     </section>

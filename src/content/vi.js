@@ -15,6 +15,8 @@ const vi = {
     next: 'Bước tiếp theo',
     prev: 'Bước trước',
     language: 'Ngôn ngữ',
+    comingSoon: 'Sắp ra mắt',
+    comingSoonCta: 'Nhận thông báo · tư vấn',
   },
 
   menu: [
@@ -338,7 +340,6 @@ const vi = {
     submit: 'Đăng ký tư vấn',
     sending: 'Đang gửi…',
     success: 'Đã nhận đăng ký. Tư vấn viên sẽ sớm liên hệ với bạn.',
-    demoNote: 'Chế độ demo: hãy cấu hình CRM endpoint (VITE_CRM_ENDPOINT) để gửi đến CRM thật.',
     error: 'Đã xảy ra lỗi. Vui lòng thử lại sau hoặc liên hệ qua email.',
     required: 'Vui lòng điền các mục bắt buộc.',
     again: 'Đăng ký mới',

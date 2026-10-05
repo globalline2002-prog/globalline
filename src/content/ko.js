@@ -17,6 +17,8 @@ const ko = {
     next: '다음 단계',
     prev: '이전 단계',
     language: '언어',
+    comingSoon: '오픈 예정',
+    comingSoonCta: '오픈 알림·상담 신청',
   },
 
   // 전체 메뉴: 각 그룹은 상단 메뉴(nav) 순서와 같습니다.
@@ -341,7 +343,6 @@ const ko = {
     submit: '상담 신청하기',
     sending: '전송 중…',
     success: '신청이 접수되었습니다. 담당자가 곧 연락드리겠습니다.',
-    demoNote: '현재 데모 모드입니다. CRM 엔드포인트(VITE_CRM_ENDPOINT)를 설정하면 실제 CRM으로 전송됩니다.',
     error: '전송 중 문제가 발생했습니다. 잠시 후 다시 시도하거나 이메일로 문의해 주세요.',
     required: '필수 항목을 입력해 주세요.',
     again: '새로 작성하기',

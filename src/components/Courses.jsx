@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { platform } from '../config'
+import { linkProps, platformLink } from '../config'
 import { useLang } from '../lang'
 import { setPrefill } from '../lib/prefill'
 import { href } from '../router'
@@ -160,7 +160,7 @@ export function CourseFinder() {
                   {f.cta}
                   <Icon name="arrow" className="h-4 w-4" />
                 </a>
-                <a href={platform.levelTestUrl} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-full border-2 border-ink/80 px-5 py-3 font-bold hover:bg-ink hover:text-white">
+                <a {...linkProps(platformLink('levelTest'))} className="inline-flex items-center rounded-full border-2 border-ink/80 px-5 py-3 font-bold hover:bg-ink hover:text-white">
                   {f.levelTest}
                 </a>
                 <button onClick={() => setAnswers([])} className="px-3 py-3 text-sm font-semibold text-ink-soft underline">

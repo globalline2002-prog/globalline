@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 
 export const pages = ['consult', 'about', 'pre-departure', 'd4', 'd2', 'career', 'news']
+// 메뉴에 노출하지 않는 내부 페이지
+const internalPages = ['admin']
 
 // 해시 라우팅: #/page/section → { page, section }
 function parse() {
   const [page = '', section = ''] = window.location.hash.replace(/^#\/?/, '').split('/')
-  return { page: pages.includes(page) ? page : '', section }
+  return { page: pages.includes(page) || internalPages.includes(page) ? page : '', section }
 }
 
 export function href(route) {

@@ -15,6 +15,8 @@ const zh = {
     next: '下一步',
     prev: '上一步',
     language: '语言',
+    comingSoon: '即将开放',
+    comingSoonCta: '开放提醒·咨询',
   },
 
   menu: [
@@ -338,7 +340,6 @@ const zh = {
     submit: '提交咨询申请',
     sending: '发送中…',
     success: '申请已受理，负责人将尽快与你联系。',
-    demoNote: '当前为演示模式。设置 CRM 接口（VITE_CRM_ENDPOINT）后将发送至实际 CRM。',
     error: '发送时出现问题。请稍后再试或通过邮件联系我们。',
     required: '请填写必填项。',
     again: '重新填写',

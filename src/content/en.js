@@ -15,6 +15,8 @@ const en = {
     next: 'Next step',
     prev: 'Previous step',
     language: 'Language',
+    comingSoon: 'Coming soon',
+    comingSoonCta: 'Get notified · consult',
   },
 
   menu: [
@@ -338,7 +340,6 @@ const en = {
     submit: 'Request consultation',
     sending: 'Sending…',
     success: 'Your request has been received. A counselor will contact you soon.',
-    demoNote: 'Demo mode: set the CRM endpoint (VITE_CRM_ENDPOINT) to send requests to the real CRM.',
     error: 'Something went wrong. Please try again later or contact us by email.',
     required: 'Please fill in the required fields.',
     again: 'New request',

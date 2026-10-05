@@ -1,4 +1,4 @@
-import { platform } from '../config'
+import { linkProps, platformLink } from '../config'
 import { useLang } from '../lang'
 import { href } from '../router'
 import Icon from './Icon'
@@ -17,7 +17,7 @@ function CtaBand() {
             {c.hero.ctaConsult}
             <Icon name="arrow" className="h-4 w-4" />
           </a>
-          <a href={platform.levelTestUrl} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-full border-2 border-white/70 px-7 py-4 font-bold text-white hover:bg-white hover:text-brand-700">
+          <a {...linkProps(platformLink('levelTest'))} className="inline-flex items-center rounded-full border-2 border-white/70 px-7 py-4 font-bold text-white hover:bg-white hover:text-brand-700">
             {c.courses.finder.levelTest}
           </a>
         </div>

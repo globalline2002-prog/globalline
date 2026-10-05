@@ -15,6 +15,8 @@ const uz = {
     next: 'Keyingi bosqich',
     prev: 'Oldingi bosqich',
     language: 'Til',
+    comingSoon: 'Tez orada',
+    comingSoonCta: 'Xabar olish · maslahat',
   },
 
   menu: [
@@ -338,7 +340,6 @@ const uz = {
     submit: 'Maslahatga yozilish',
     sending: 'Yuborilmoqda…',
     success: 'Arizangiz qabul qilindi. Tez orada siz bilan bogʻlanamiz.',
-    demoNote: 'Demo rejim: haqiqiy CRMga yuborish uchun CRM endpoint (VITE_CRM_ENDPOINT) ni sozlang.',
     error: 'Xatolik yuz berdi. Keyinroq urinib koʻring yoki email orqali yozing.',
     required: 'Majburiy maydonlarni toʻldiring.',
     again: 'Yangi ariza',

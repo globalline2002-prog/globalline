@@ -1,7 +1,6 @@
 import { platform } from '../config'
 
 const ATTRIBUTION_KEY = 'gcnb_attribution'
-const LEADS_KEY = 'gcnb_demo_leads'
 const ATTRIBUTION_TTL_DAYS = 30
 
 const ATTRIBUTION_PARAMS = [
@@ -65,7 +64,7 @@ export function getAttribution() {
   return stored.values
 }
 
-// 상담·파트너 신청을 CRM 으로 전송합니다. 엔드포인트가 없으면 데모 모드로 브라우저에 저장합니다.
+// 상담·파트너 신청을 CRM 으로 전송합니다. 기본은 내장 서버(/api/leads), .env 로 외부 CRM 지정 가능.
 export async function submitLead(form) {
   const payload = {
     ...form,
@@ -74,13 +73,6 @@ export async function submitLead(form) {
     page: window.location.href,
     siteLanguage: document.documentElement.lang,
     submittedAt: new Date().toISOString(),
-  }
-
-  if (!platform.crmEndpoint) {
-    const leads = safeGet(LEADS_KEY) || []
-    leads.push(payload)
-    safeSet(LEADS_KEY, leads)
-    return { ok: true, demo: true }
   }
 
   const res = await fetch(platform.crmEndpoint, {
@@ -92,7 +84,7 @@ export async function submitLead(form) {
     body: JSON.stringify(payload),
   })
   if (!res.ok) throw new Error(`CRM 응답 오류 (${res.status})`)
-  return { ok: true, demo: false }
+  return { ok: true }
 }
 
 // 직원·파트너·추천인이 SNS/메신저에 공유할 추적 링크를 만듭니다.

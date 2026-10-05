@@ -22,61 +22,73 @@
 - 언어 결정 순서: URL `?lang=vi` → 사용자가 고른 언어(브라우저 저장) → 브라우저 언어 → 한국어
 - 추천 링크 생성 시 현재 언어가 링크에 포함되어 받는 사람도 같은 언어로 봅니다.
 
-## 플랫폼 연동 (CRM · LMS)
+## 내장 CRM 서버 (외부 CRM·LMS 연결 전까지 사용)
 
-`.env.example`을 `.env`로 복사해 값을 채웁니다.
+외부 CRM·LMS·포털이 준비되기 전에도 사이트가 실제로 동작하도록 내장 서버(`server/`)를 포함합니다.
+별도 패키지 없이 Node.js(20.12 이상)만으로 실행됩니다.
 
-| 변수 | 용도 |
+```bash
+cp .env.example .env      # ADMIN_TOKEN 을 반드시 설정
+npm install
+npm start                 # 사이트 빌드 + 서버 실행 → http://localhost:8787
+```
+
+개발 중에는 `npm run server`(API)와 `npm run dev`(화면)를 함께 실행합니다. `/api` 요청은 자동으로 서버로 전달됩니다.
+
+| 기능 | 내용 |
 | --- | --- |
-| `VITE_CRM_ENDPOINT` | 상담·파트너 신청을 받을 CRM API (POST JSON). 비우면 데모 모드(브라우저 저장) |
-| `VITE_CRM_PUBLIC_KEY` | 선택. `X-Api-Key` 헤더로 전송 |
-| `VITE_LMS_URL`, `VITE_LEVEL_TEST_URL` | 학생 LMS, 레벨테스트 |
-| `VITE_PARTNER_PORTAL_URL` | 유학원 파트너 포털 |
-| `VITE_STAFF_CRM_URL` | 직원 CRM |
-| `VITE_INSTITUTION_PORTAL_URL` | 대학·기업 포털 |
-| `VITE_CONTACT_EMAIL`, `VITE_KAKAO_CHANNEL_URL` | 연락처 |
+| 상담·파트너 접수 | `POST /api/leads` — 입력값 검증, 스팸 방지(숨김 필드·IP당 10분 10건), `data/leads.json`에 저장 |
+| 내부 CRM 화면 | `#/admin` (메뉴에 노출 안 됨, `ADMIN_TOKEN` 로그인) — 상태(신규·상담 중·레벨테스트·등록 확정·종료), 담당자, 상담 메모, 검색·필터 |
+| 성과 집계 | 직원(staff)·유학원(partner)·추천인(ref) 코드별 유입·등록·전환율, 채널·신청 유형 통계 |
+| 내보내기 | CSV 다운로드 (엑셀 한글 지원) |
+| 플랫폼 연결 상태 | 어떤 외부 시스템이 연결/미연결인지 관리 화면에서 확인 |
+
+> `data/` 폴더에는 개인정보가 저장되므로 커밋되지 않으며(.gitignore), 서버 백업 대상에 포함하세요.
+
+### 외부 시스템이 없을 때의 동작
+
+| 항목 | 미연결 시 |
+| --- | --- |
+| 학생 LMS · 레벨테스트 | '오픈 예정' 표시 → 상담 신청으로 연결 (상담사가 레벨테스트 안내) |
+| 유학원 파트너 포털 | '오픈 예정' 표시 → 파트너 안내·신청으로 연결 |
+| 대학·기업 포털 | '오픈 예정' 표시 → 협력 문의로 연결 |
+| 직원 CRM | 내장 CRM 관리 화면(`#/admin`)으로 연결 |
+
+## 나중에 외부 플랫폼 연결하기
+
+코드 수정 없이 `.env` 값만 채운 뒤 다시 빌드·실행하면 됩니다.
+
+| 연결 대상 | 설정 | 동작 |
+| --- | --- | --- |
+| 외부 CRM (권장) | `CRM_WEBHOOK_URL`, `CRM_WEBHOOK_SECRET` | 신규 리드를 내장 CRM에 저장하면서 외부 CRM으로도 전달. 헤더 `X-GCNB-Signature` = 본문의 HMAC-SHA256. 실패 시 관리 화면에서 재전송 |
+| 외부 CRM 직접 접수 | `VITE_CRM_ENDPOINT`, `VITE_CRM_PUBLIC_KEY` | 사이트가 외부 CRM API로 바로 전송 (내장 서버 우회) |
+| 학생 LMS · 레벨테스트 | `VITE_LMS_URL`, `VITE_LEVEL_TEST_URL` | '오픈 예정'이 사라지고 실제 로그인으로 연결 |
+| 유학원 파트너 포털 | `VITE_PARTNER_PORTAL_URL` | 〃 |
+| 직원 CRM | `VITE_STAFF_CRM_URL` | 직원 로그인이 외부 CRM으로 연결 |
+| 대학·기업 포털 | `VITE_INSTITUTION_PORTAL_URL` | 〃 |
+
+웹훅으로 전달되는 형식: `{ "event": "lead.created", "lead": { id, createdAt, status, type, name, phone, email, country, interest, attribution: { staff, partner, ref, utm_* }, ... } }`
+
+다른 저장소(DB)로 옮길 때는 `server/store.js`의 함수(list·get·create·update)만 교체하면 됩니다.
 
 ### 유입 추적 (학생 추천 · 직원 영업 · B2B 유학원)
 
-사이트 접속 URL의 아래 파라미터를 30일간 저장해 상담 신청 시 CRM에 함께 보냅니다.
+사이트 접속 URL의 아래 파라미터를 30일간 저장해 상담 신청 시 함께 보냅니다.
 
 - `ref` 학생·학부모 추천인 코드, `staff` 직원 코드, `partner` 유학원·해외 파트너 코드
 - `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`
 
 예: `https://<도메인>/?partner=VN-HANOI&utm_source=zalo&lang=vi#/consult/form`
 
-### CRM으로 전송되는 데이터 예시
-
-```json
-{
-  "type": "student",
-  "name": "Nguyen Van A",
-  "country": "베트남",
-  "phone": "+84 ...",
-  "contactPref": "Zalo",
-  "interest": "입국 전 한국어 80시간",
-  "finder": "80h",
-  "code": "ST-KIM01",
-  "consent": "2026-10-05T05:17:01.857Z",
-  "preferredLanguage": "Tiếng Việt",
-  "attribution": { "staff": "ST-KIM01", "utm_source": "zalo" },
-  "source": "website",
-  "page": "https://.../#/consult/form",
-  "siteLanguage": "vi",
-  "submittedAt": "2026-10-05T05:17:01.857Z"
-}
-```
-
-CRM 서버는 CORS에서 사이트 도메인을 허용해야 합니다.
-
 ## 기술 스택
 
-React 19 · Vite · Tailwind CSS 4 · qrcode
+React 19 · Vite · Tailwind CSS 4 · qrcode · Node.js 내장 서버(의존성 없음)
 
 ```bash
 npm install
-npm run dev      # 개발 서버
-npm run build    # 프로덕션 빌드 (dist/)
+npm run dev      # 화면 개발 서버
+npm run server   # 내장 CRM 서버 (API)
+npm start        # 빌드 + 서버 실행 (운영)
 npm run lint
 ```
 
