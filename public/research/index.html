@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>유학생 유치·사전교육 연구 | Yohan Hwang</title>
+<meta name="description" content="외국인 유학생 유치와 입학 전 사전교육 성과에 관한 통합적 연구 — 유치 종사자의 영업역량과 외국인 유학생의 학업성취 및 자기효능감. 박사학위논문 연구 소개." />
+<meta property="og:title" content="외국인 유학생 유치와 입학 전 사전교육 성과에 관한 통합적 연구" />
+<meta property="og:description" content="유치 실무자 334명 · 유학생 334명, 두 실증연구를 SER-M·인과 루프·SDG로 통합한 박사학위논문." />
+<meta property="og:image" content="images/causal-loop-diagram.png" />
+<meta name="theme-color" content="#0f2a4a" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f2a4a'/%3E%3Cpath d='M8 21l5-9 5 6 6-10' stroke='%2350c8b4' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<script>
+  // /research 처럼 끝 슬래시 없이 열려도 상대 경로(이미지)가 깨지지 않도록 보정
+  (function () {
+    var p = location.pathname
+    if (!/\/$/.test(p) && !/\.[a-z0-9]+$/i.test(p)) location.replace(p + '/' + location.search + location.hash)
+  })()
+</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --surface-2: #eef2f6;
+    --ink: #15202e;
+    --ink-2: #4a5768;
+    --ink-3: #7a8696;
+    --line: #dde3ea;
+    --brand: #0f2a4a;
+    --accent: #0f8a7a;
+    --accent-soft: #e2f4f1;
+    --s1: #2f5d9e;   /* 연구 1 / 성과관리 */
+    --s1b: #8fb1df;  /* 연구 1 / 교육훈련 */
+    --s2: #c46a1b;   /* 연구 2 / 학업성취 */
+    --s2b: #eab27a;  /* 연구 2 / 자기효능감 */
+    --muted-bar: #c9d1db;
+    --warn: #b4472f;
+    --hero-ink: #ffffff;
+    --hero-bg: linear-gradient(135deg, #0b1f38 0%, #12385f 55%, #0f5d63 100%);
+    --shadow: 0 1px 2px rgba(16, 32, 54, .06), 0 6px 20px rgba(16, 32, 54, .06);
+    --radius: 16px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d131b; --surface: #151d28; --surface-2: #1c2633; --ink: #e8edf3; --ink-2: #b2bdca; --ink-3: #8592a3;
+      --line: #2a3644; --brand: #9cc3f0; --accent: #4cc7b3; --accent-soft: #143430;
+      --s1: #6f9fe0; --s1b: #3c5f8f; --s2: #e8964f; --s2b: #8f5a2c; --muted-bar: #3a4656; --warn: #ef8a72;
+      --hero-bg: linear-gradient(135deg, #07111f 0%, #0d2846 55%, #0b3f44 100%);
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d131b; --surface: #151d28; --surface-2: #1c2633; --ink: #e8edf3; --ink-2: #b2bdca; --ink-3: #8592a3;
+    --line: #2a3644; --brand: #9cc3f0; --accent: #4cc7b3; --accent-soft: #143430;
+    --s1: #6f9fe0; --s1b: #3c5f8f; --s2: #e8964f; --s2b: #8f5a2c; --muted-bar: #3a4656; --warn: #ef8a72;
+    --hero-bg: linear-gradient(135deg, #07111f 0%, #0d2846 55%, #0b3f44 100%);
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    font-size: 16px; line-height: 1.7; word-break: keep-all; overflow-wrap: anywhere;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  /* 상단 내비게이션 */
+  .nav {
+    position: sticky; top: 0; z-index: 20; backdrop-filter: saturate(1.4) blur(10px);
+    background: color-mix(in srgb, var(--bg) 82%, transparent); border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display: flex; align-items: center; gap: 16px; height: 60px; }
+  .nav .logo { font-weight: 800; letter-spacing: -.02em; text-decoration: none; white-space: nowrap; color: var(--brand); }
+  .nav .links { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; flex: 1; }
+  .nav .links::-webkit-scrollbar { display: none; }
+  .nav .links a {
+    text-decoration: none; font-size: 14px; color: var(--ink-2); padding: 6px 10px; border-radius: 999px; white-space: nowrap;
+  }
+  .nav .links a:hover, .nav .links a.on { background: var(--surface-2); color: var(--ink); }
+  .theme-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 999px;
+    width: 36px; height: 36px; cursor: pointer; flex: none; font-size: 16px;
+  }
+
+  /* 히어로 */
+  .hero { background: var(--hero-bg); color: var(--hero-ink); padding: 88px 0 72px; position: relative; overflow: hidden; }
+  .hero::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(600px 300px at 85% 10%, rgba(80, 200, 180, .18), transparent 70%);
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; letter-spacing: .04em;
+    padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); }
+  .hero h1 { font-size: clamp(28px, 4.6vw, 48px); line-height: 1.25; letter-spacing: -.03em; margin: 22px 0 14px; font-weight: 800; max-width: 920px; }
+  .hero .sub { font-size: clamp(16px, 2vw, 20px); color: rgba(255,255,255,.82); margin: 0 0 28px; max-width: 760px; }
+  .hero .meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: rgba(255,255,255,.75); }
+  .hero .meta b { color: #fff; font-weight: 700; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 44px; }
+  .stat { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 18px; }
+  .stat .v { font-size: clamp(24px, 3vw, 32px); font-weight: 800; letter-spacing: -.02em; }
+  .stat .l { font-size: 13px; color: rgba(255,255,255,.72); line-height: 1.5; margin-top: 4px; }
+
+  /* 섹션 공통 */
+  section.block { padding: 84px 0; border-bottom: 1px solid var(--line); }
+  section.block.alt { background: var(--surface); }
+  .kicker { color: var(--accent); font-weight: 700; font-size: 14px; letter-spacing: .06em; }
+  h2 { font-size: clamp(24px, 3.2vw, 34px); line-height: 1.3; letter-spacing: -.025em; margin: 8px 0 14px; font-weight: 800; }
+  h3 { font-size: 19px; letter-spacing: -.015em; margin: 0 0 8px; line-height: 1.4; }
+  .lead { color: var(--ink-2); font-size: 17px; max-width: 760px; margin: 0 0 36px; }
+  .source { font-size: 12.5px; color: var(--ink-3); margin-top: 28px; }
+  .source::before { content: "출처 · "; font-weight: 600; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+  section.alt .card { background: var(--bg); box-shadow: none; }
+  .grid { display: grid; gap: 16px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .pill { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); }
+  .pill.s1 { background: color-mix(in srgb, var(--s1) 16%, transparent); color: var(--s1); }
+  .pill.s2 { background: color-mix(in srgb, var(--s2) 16%, transparent); color: var(--s2); }
+  .pill.ac { background: var(--accent-soft); color: var(--accent); }
+  .note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 14px 18px; border-radius: 0 12px 12px 0; color: var(--ink); font-size: 15px; }
+  .note.warn { border-color: var(--warn); background: color-mix(in srgb, var(--warn) 10%, transparent); }
+  ul.clean { list-style: none; padding: 0; margin: 0; }
+  ul.clean li { position: relative; padding-left: 20px; margin: 8px 0; color: var(--ink-2); }
+  ul.clean li::before { content: ""; position: absolute; left: 4px; top: .72em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+  /* 문제의식: 서비스 체인 */
+  .chain { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 8px 0 28px; }
+  .chain .step { position: relative; background: var(--surface); border: 1px solid var(--line); padding: 18px 16px 18px 28px; font-weight: 700; text-align: center; }
+  .chain .step:first-child { border-radius: 14px 0 0 14px; padding-left: 16px; }
+  .chain .step:last-child { border-radius: 0 14px 14px 0; }
+  .chain .step small { display: block; font-weight: 500; color: var(--ink-3); font-size: 12.5px; }
+  .chain .step:not(:last-child)::after {
+    content: ""; position: absolute; right: -11px; top: 50%; width: 20px; height: 20px; transform: translateY(-50%) rotate(45deg);
+    background: var(--surface); border-top: 1px solid var(--line); border-right: 1px solid var(--line); z-index: 2;
+  }
+  .chain .step.studied { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+  .chain .step.studied::after { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+
+  /* 연구 목적 */
+  .aim .n { width: 34px; height: 34px; border-radius: 10px; background: var(--brand); color: var(--bg); font-weight: 800; display: grid; place-items: center; margin-bottom: 14px; }
+  .aim p { color: var(--ink-2); margin: 0 0 12px; font-size: 15px; }
+
+  /* 표 */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 620px; }
+  th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  thead th { background: var(--surface-2); font-size: 14px; }
+  tbody th { color: var(--ink-3); font-weight: 600; width: 120px; font-size: 14px; }
+  td.c, th.c { text-align: center; }
+  table.compact { min-width: 0; }
+  @media (max-width: 640px) { th, td { padding: 12px 12px; } }
+
+  /* 막대 차트 */
+  .chart { display: grid; gap: 14px; }
+  .chart .row { display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: center; }
+  .chart .lab { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+  .bars { display: grid; gap: 4px; }
+  .bar { position: relative; height: 22px; display: flex; align-items: center; }
+  .bar i { display: block; height: 100%; border-radius: 0 6px 6px 0; width: 0; transition: width .9s cubic-bezier(.2,.7,.2,1); }
+  .bar span { font-size: 12.5px; margin-left: 8px; color: var(--ink-2); white-space: nowrap; }
+  .bar.ns i { background: repeating-linear-gradient(135deg, var(--muted-bar) 0 5px, transparent 5px 9px) !important; border: 1px dashed var(--ink-3); }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); margin-bottom: 16px; }
+  .legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+  .legend .ns::before { background: repeating-linear-gradient(135deg, var(--muted-bar) 0 3px, transparent 3px 5px); border: 1px dashed var(--ink-3); width: 10px; height: 10px; }
+  .axis { display: grid; grid-template-columns: 76px 1fr; gap: 12px; font-size: 11.5px; color: var(--ink-3); }
+  .axis div { display: flex; justify-content: space-between; }
+
+  .big { display: grid; gap: 12px; }
+  .big .card { padding: 20px 22px; }
+  .big .v { font-size: 30px; font-weight: 800; letter-spacing: -.02em; }
+  .big .l { color: var(--ink-2); font-size: 14px; }
+  .split { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; align-items: start; }
+
+  .sig { font-weight: 700; color: var(--accent); }
+  .nsig { color: var(--ink-3); }
+
+  /* 포레스트 플롯 */
+  .forest { display: grid; gap: 4px; }
+  .forest .fr { display: grid; grid-template-columns: 150px 1fr 120px; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .forest .fr:last-child { border-bottom: 0; }
+  .forest .fl { font-size: 14px; font-weight: 600; }
+  .forest .fl small { display: block; color: var(--ink-3); font-weight: 500; font-size: 12px; }
+  .forest .track { position: relative; height: 28px; }
+  .forest .zero { position: absolute; top: -6px; bottom: -6px; width: 0; border-left: 1.5px solid var(--ink-3); }
+  .forest .ci { position: absolute; top: 50%; height: 3px; transform: translateY(-50%); border-radius: 2px; }
+  .forest .pt { position: absolute; top: 50%; width: 12px; height: 12px; border-radius: 50%; transform: translate(-50%, -50%); border: 2px solid var(--surface); }
+  .forest .fv { font-size: 13px; text-align: right; color: var(--ink-2); }
+  .forest .fv b { color: var(--ink); }
+  .forest-axis { display: grid; grid-template-columns: 150px 1fr 120px; gap: 12px; font-size: 11.5px; color: var(--ink-3); margin-top: 6px; }
+  .forest-axis .ticks { position: relative; height: 16px; }
+  .forest-axis .ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+
+  /* SER-M */
+  .serm { display: grid; grid-template-columns: 150px 1fr 1fr; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+  .serm > div { padding: 16px 18px; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .serm > div:nth-last-child(-n+3) { border-bottom: 0; }
+  .serm .h { background: var(--surface-2); font-weight: 700; font-size: 14px; }
+  .serm .k { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  .serm .k b { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: var(--brand); color: var(--bg); flex: none; }
+  .serm .mech { background: var(--accent-soft); font-weight: 600; }
+
+  /* CLD */
+  figure.cld { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
+  figure.cld img { width: 100%; height: auto; display: block; }
+  figure.cld figcaption { color: #4a5768; font-size: 13px; padding: 10px 6px 2px; }
+  .loop .tag { display: inline-grid; place-items: center; min-width: 40px; height: 30px; padding: 0 8px; border-radius: 8px; font-weight: 800; margin-bottom: 10px; }
+  .loop.r .tag { background: color-mix(in srgb, var(--s1) 18%, transparent); color: var(--s1); }
+  .loop.b .tag { background: color-mix(in srgb, var(--warn) 16%, transparent); color: var(--warn); }
+  .loop p { margin: 0; color: var(--ink-2); font-size: 15px; }
+
+  /* SDG */
+  .sdg { border-top: 6px solid var(--sdg); }
+  .sdg .no { font-weight: 800; color: var(--sdg); font-size: 14px; letter-spacing: .04em; }
+  .sdg .tgt { font-size: 12.5px; color: var(--ink-3); margin: 0 0 10px; }
+  .sdg p { color: var(--ink-2); font-size: 14.5px; margin: 0 0 14px; }
+  .meter { display: flex; gap: 4px; align-items: center; }
+  .meter i { width: 18px; height: 8px; border-radius: 4px; background: var(--surface-2); }
+  .meter i.on { background: var(--sdg); }
+  .meter span { font-size: 12.5px; color: var(--ink-2); margin-left: 8px; }
+
+  /* 윤리 */
+  .risk { display: grid; grid-template-columns: 1fr 1.3fr; gap: 0; border-bottom: 1px solid var(--line); }
+  .risk:last-child { border-bottom: 0; }
+  .risk > div { padding: 14px 18px; font-size: 15px; }
+  .risk > div:first-child { color: var(--warn); font-weight: 600; }
+  .risk > div:last-child { color: var(--ink-2); border-left: 1px solid var(--line); }
+  .risk.h > div { background: var(--surface-2); color: var(--ink) !important; font-weight: 700; font-size: 14px; }
+
+  /* 전략 타임라인 */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: s; }
+  .steps .card { position: relative; padding-top: 56px; }
+  .steps .card::before {
+    counter-increment: s; content: counter(s); position: absolute; top: 18px; left: 24px; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-weight: 800; display: grid; place-items: center; font-size: 14px;
+  }
+  .steps p { color: var(--ink-2); font-size: 15px; margin: 0 0 12px; }
+  .steps .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* 결론 */
+  .concl .card h3 { display: flex; gap: 10px; align-items: center; }
+  .concl .ok h3::before { content: "✓"; color: var(--accent); }
+  .concl .lim h3::before { content: "!"; color: var(--warn); font-weight: 900; }
+  .concl ul.clean li { color: var(--ink); }
+  .concl .lim ul.clean li::before { background: var(--warn); }
+
+  .future { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .future .card { padding: 20px; }
+  .future .n { font-size: 13px; font-weight: 800; color: var(--accent); }
+  .future p { font-size: 14px; color: var(--ink-2); margin: 6px 0 0; }
+
+  footer { padding: 48px 0 64px; color: var(--ink-3); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; }
+  footer b { color: var(--ink); }
+
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .bar i { transition: none; }
+  }
+
+  @media (max-width: 960px) {
+    .g4, .future { grid-template-columns: repeat(2, 1fr); }
+    .g3, .steps { grid-template-columns: repeat(2, 1fr); }
+    .split { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 16px; }
+    section.block { padding: 60px 0; }
+    .hero { padding: 64px 0 52px; }
+    .g2, .g3, .g4, .steps, .future { grid-template-columns: 1fr; }
+    .chain { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .chain .step, .chain .step:first-child, .chain .step:last-child { border-radius: 12px; padding: 14px 10px; }
+    .chain .step::after { display: none; }
+    .serm { grid-template-columns: 1fr 1fr; }
+    .serm .k { grid-column: 1 / -1; background: var(--surface-2); }
+    .serm .h.corner { display: none; }
+    .serm .h:not(.corner) { display: none; }
+    .serm .c1::before { content: "연구 1 · "; color: var(--s1); font-weight: 700; font-size: 12px; display: block; }
+    .serm .c2::before { content: "연구 2 · "; color: var(--s2); font-weight: 700; font-size: 12px; display: block; }
+    .risk { grid-template-columns: 1fr; }
+    .risk > div:last-child { border-left: 0; padding-top: 0; }
+    .risk.h { display: none; }
+    .forest .fr, .forest-axis { grid-template-columns: 96px 1fr 84px; gap: 8px; }
+    .forest .fv { font-size: 11.5px; }
+    .chart .row, .axis { grid-template-columns: 64px 1fr; }
+    .nav .logo { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="주요 섹션">
+  <div class="wrap">
+    <a class="logo" href="#top">유학생 서비스 연구</a>
+    <div class="links">
+      <a href="#problem">문제의식</a>
+      <a href="#aims">연구 목적</a>
+      <a href="#design">연구 설계</a>
+      <a href="#study1">연구 1</a>
+      <a href="#study2">연구 2</a>
+      <a href="#integration">통합</a>
+      <a href="#sdg">SDG</a>
+      <a href="#ethics">윤리·AI</a>
+      <a href="#strategy">경영 전략</a>
+      <a href="#conclusion">결론</a>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="밝은/어두운 테마 전환">◐</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow">박사학위논문 · DBA &amp; Ph.D. 연구</span>
+    <h1>외국인 유학생 유치와 입학 전 사전교육 성과에 관한 통합적 연구</h1>
+    <p class="sub">유치 종사자의 영업역량과 외국인 유학생의 학업성취 및 자기효능감 — 두 편의 실증 연구를 하나의 서비스 흐름으로 묶고, 유엔 지속가능발전목표(SDGs)에 비추어 읽습니다.</p>
+    <div class="meta">
+      <span>연구자 <b>Yohan Hwang</b></span>
+      <span>DBA, SDG Management School · Ph.D., aSSIST University</span>
+      <span>지도교수 <b>Bo Young Kim</b></span>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v num">≈253,000</div><div class="l">국내 대학 외국인 유학생 수<br />(2025년 연간 통계)</div></div>
+      <div class="stat"><div class="v num">300,000</div><div class="l">Study Korea 300K 프로젝트<br />2027년 목표</div></div>
+      <div class="stat"><div class="v num">334 + 334</div><div class="l">유치 실무자 · 유학생<br />독립된 두 설문 응답자</div></div>
+      <div class="stat"><div class="v num">9 / 10 · 4 / 6</div><div class="l">유의한 간접 경로<br />(연구 1 · 연구 2)</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 문제의식 -->
+<section class="block" id="problem">
+  <div class="wrap reveal">
+    <div class="kicker">01 · 문제의식</div>
+    <h2>등록 인원의 증가만으로는 유학생의 성공을 입증할 수 없다</h2>
+    <p class="lead">핵심 경영상의 문제는 <b>책임의 연속성</b>입니다. 대학, 유학원, 교육기관, 학생은 서로 다른 단계에서 서로 다른 조건 아래 움직이고, 단계가 넘어갈 때마다 정보의 질과 책임의 명확성이 그다음에 일어날 일을 좌우합니다.</p>
+    <div class="chain" role="list" aria-label="유학생 서비스 단계">
+      <div class="step studied" role="listitem">유치<small>연구 1에서 실증</small></div>
+      <div class="step studied" role="listitem">사전 준비<small>연구 2에서 실증</small></div>
+      <div class="step" role="listitem">대학 수학<small>통합 관점</small></div>
+      <div class="step" role="listitem">진로 지원<small>통합 관점</small></div>
+    </div>
+    <div class="grid g2">
+      <div class="note">현실에서 유치는 대개 <b>등록 시점</b>에 평가되고, 사전 준비와 지원은 따로 관리됩니다.</div>
+      <div class="note">본 논문은 앞의 두 단계를 실증적으로 검토하고, 전체 흐름을 <b>하나의 서비스</b>로 다룹니다.</div>
+    </div>
+    <p class="source">제1장 §1.1 (pp. 1–3); 제3장 §3.2 (p. 53) — 교육부 (2023, 2025)</p>
+  </div>
+</section>
+
+<!-- 연구 목적 -->
+<section class="block alt" id="aims">
+  <div class="wrap reveal">
+    <div class="kicker">02 · 연구 목적</div>
+    <h2>네 가지 연구 목적이 조직 연구, 학생 연구, SDG 분석을 연결한다</h2>
+    <p class="lead">앞의 두 목적은 실증 연구, 세 번째는 간접 경로 검토, 네 번째는 메커니즘 기반 관점·시스템 관점·윤리경영·AI를 통한 통합입니다.</p>
+    <div class="grid g4">
+      <article class="card aim"><div class="n">1</div><h3>유치 역량과 성과</h3><p>다섯 가지 영업역량은 성과관리 시스템과 교육훈련 지원을 통해 유치성과와 어떻게 관련되는가?</p><span class="pill s1">연구 1 · 제2장</span></article>
+      <article class="card aim"><div class="n">2</div><h3>사전교육과 학생 수준의 두 매개변수</h3><p>문화·사회·언어 영역의 입학 전 사전교육은 지각된 학업성취 및 자기효능감과 어떻게 관련되는가?</p><span class="pill s2">연구 2 · 제3장</span></article>
+      <article class="card aim"><div class="n">3</div><h3>취업의도에 이르는 간접 경로</h3><p>두 매개변수를 거쳐 사전교육에서 취업의도로 이어지는 경로 가운데 어느 것이 실증적으로 지지되는가?</p><span class="pill s2">연구 2 · 제3장</span></article>
+      <article class="card aim"><div class="n">4</div><h3>지속가능한 서비스 통합</h3><p>두 연구의 증거를 SDG 4, 8, 10, 17에 비추어 읽을 때, 책임 있는 경영에 어떤 시사점을 주는가?</p><span class="pill ac">제1장 · 제4장 · 제5장</span></article>
+    </div>
+    <p class="source">제1장 §1.2 연구 목적 (pp. 15–17); §1.3 논문의 구성 (p. 18)</p>
+  </div>
+</section>
+
+<!-- 연구 설계 -->
+<section class="block" id="design">
+  <div class="wrap reveal">
+    <div class="kicker">03 · 연구 설계</div>
+    <h2>서로 독립된 두 개의 설문조사, 응답자는 각각 334명</h2>
+    <p class="lead">두 연구 모두 횡단면 설문조사이며 확인적 요인분석(CFA), 구조방정식 모형(SEM), 부트스트랩 매개효과 검증으로 분석했습니다. 표본 크기가 같은 것은 우연입니다.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th><span class="pill s1">연구 1 · 제2장</span></th><th><span class="pill s2">연구 2 · 제3장</span></th></tr></thead>
+        <tbody>
+          <tr><th>응답자</th><td>유치 실무자 334명<br /><span class="nsig">대학 직원 186명 · 유학원 종사자 148명</span></td><td>입학 전 사전교육을 받은 외국인 유학생 334명<br /><span class="nsig">회수 400부</span></td></tr>
+          <tr><th>자료 수집</th><td class="num">2025년 12월 – 2026년 2월</td><td class="num">2026년 6월 29일 – 8월 7일</td></tr>
+          <tr><th>독립변수</th><td>영업역량의 다섯 차원<br /><span class="nsig">의사소통 · 문제해결 · 고객관리 · 관계구축 · 환경대응</span></td><td>문화적응 · 사회적응 · 언어적응 교육</td></tr>
+          <tr><th>매개변수</th><td>성과관리 시스템 · 교육훈련 지원</td><td>지각된 학업성취 · 자기효능감</td></tr>
+          <tr><th>종속변수</th><td>유치(등록) 성과</td><td>한국 내 취업의도</td></tr>
+          <tr><th>분석 방법</th><td>CFA, SEM, 부트스트랩 매개효과 검증</td><td>CFA, SEM, 부트스트랩 매개효과 검증</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn" style="margin-top:20px">두 표본은 서로 별개입니다. 통합은 <b>개념적 차원</b>의 것이며, 개별 유치 담당자에서 개별 학생으로 이어지는 경로는 검증하지 않았습니다.</div>
+    <p class="source">제1장 §1.3, 표 1.1 (p. 19); §2.5.3 (p. 34); §3.5.1 (p. 67)</p>
+  </div>
+</section>
+
+<!-- 연구 1 -->
+<section class="block alt" id="study1">
+  <div class="wrap reveal">
+    <div class="kicker">04 · 연구 1 결과</div>
+    <h2>다섯 역량 모두 성과관리와, 네 역량은 교육훈련 지원과 관련된다</h2>
+    <p class="lead">영업역량과 유치성과 사이에 두 조직 변수 — 성과관리 시스템과 교육훈련 지원 — 가 놓여 있습니다. 관계구축이 두 매개변수 모두에 대해 가장 큰 계수를 보입니다.</p>
+    <div class="split">
+      <div class="card">
+        <h3>영업역량 → 매개변수 (표준화 계수 β)</h3>
+        <div class="legend"><span style="--c:var(--s1)">→ 성과관리 시스템</span><span style="--c:var(--s1b)">→ 교육훈련 지원</span><span class="ns">유의하지 않음</span></div>
+        <div class="chart" id="chart1" data-max="0.3"></div>
+        <div class="axis" aria-hidden="true"><span></span><div><span>0</span><span>.10</span><span>.20</span><span>.30</span></div></div>
+      </div>
+      <div class="big">
+        <div class="card"><div class="v num" style="color:var(--s1)">β = 0.435</div><div class="l">성과관리 시스템 → 유치성과 (p &lt; .001)</div></div>
+        <div class="card"><div class="v num" style="color:var(--s1)">β = 0.373</div><div class="l">교육훈련 지원 → 유치성과 (p &lt; .001)</div></div>
+        <div class="card"><div class="v num">R² = 0.452</div><div class="l">유치성과 분산의 약 45%를 설명</div></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:48px">간접 경로 열 개 중 아홉 개가 지지된다</h3>
+    <p class="lead" style="margin-bottom:20px">95% 부트스트랩 신뢰구간(5,000회 재추출) 기준. 역량은 조직 메커니즘을 통해 작동합니다.</p>
+    <div class="table-wrap">
+      <table class="compact">
+        <thead><tr><th>역량</th><th class="c">성과관리 경유</th><th class="c">교육훈련 지원 경유</th></tr></thead>
+        <tbody class="num">
+          <tr><td>의사소통</td><td class="c sig">0.138</td><td class="c sig">0.087</td></tr>
+          <tr><td>문제해결</td><td class="c sig">0.097</td><td class="c sig">0.097</td></tr>
+          <tr><td>고객관리</td><td class="c sig">0.118</td><td class="c nsig">0.041 (n.s.)</td></tr>
+          <tr><td>관계구축</td><td class="c sig">0.129</td><td class="c sig">0.101</td></tr>
+          <tr><td>환경대응</td><td class="c sig">0.097</td><td class="c sig">0.063</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid g3" style="margin-top:20px">
+      <div class="note">유능한 유치 담당자는 혼자서가 아니라 <b>평가 루틴과 교육훈련</b>을 통해 성과와 연결된다.</div>
+      <div class="note">고객관리–교육훈련 결과(β = 0.090, n.s.)는 <b>진단이 필요하다</b>는 뜻이지, 교육훈련이 불필요하다는 결론이 아니다.</div>
+      <div class="note warn">횡단면 자기보고 자료: 관련성일 뿐, 입증된 인과효과가 아니다. 계수 간 차이는 공식 검증하지 않았다.</div>
+    </div>
+    <p class="source">제2장 §2.6.2, 표 2.7 (pp. 39–40); 그림 2.1 (p. 30); §2.6.3, 표 2.8 (p. 41); §2.7.1–2.7.3 (pp. 42–46)</p>
+  </div>
+</section>
+
+<!-- 연구 2 -->
+<section class="block" id="study2">
+  <div class="wrap reveal">
+    <div class="kicker">05 · 연구 2 결과</div>
+    <h2>언어 영역의 준비만이 두 매개변수 모두와 연결된다</h2>
+    <p class="lead">입학 전 사전교육은 문화적응·사회적응·언어적응의 세 영역입니다. 모형 적합도는 양호합니다 (<span class="num">CFI = .963, RMSEA = .043</span>). 지각된 학업성취는 자기평가이며 행정상의 성적이 아닙니다.</p>
+    <div class="split">
+      <div class="card">
+        <h3>사전교육 → 매개변수 (표준화 계수 β)</h3>
+        <div class="legend"><span style="--c:var(--s2)">→ 지각된 학업성취</span><span style="--c:var(--s2b)">→ 자기효능감</span><span class="ns">유의하지 않음</span></div>
+        <div class="chart" id="chart2" data-max="0.3"></div>
+        <div class="axis" aria-hidden="true"><span></span><div><span>0</span><span>.10</span><span>.20</span><span>.30</span></div></div>
+      </div>
+      <div class="big">
+        <div class="card"><div class="v num" style="color:var(--s2)">β = .249</div><div class="l">학업성취 → 취업의도 (p &lt; .001)</div></div>
+        <div class="card"><div class="v num" style="color:var(--s2)">β = .224</div><div class="l">자기효능감 → 취업의도 (p &lt; .001)</div></div>
+        <div class="card"><div class="l">유의하지 않음: 문화 → 학업성취 (.109), 문화 → 자기효능감 (.078), 사회 → 자기효능감 (.119)</div></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:48px">학업성취는 세 영역 모두를 매개하고, 자기효능감은 언어 영역만 매개한다</h3>
+    <p class="lead" style="margin-bottom:20px">여섯 개의 특정 간접효과 중 네 개가 유의합니다 — 가설 H9는 부분적으로 지지됩니다. 점은 간접효과, 선은 95% 신뢰구간이며 0을 지나면 유의하지 않습니다.</p>
+    <div class="card">
+      <div class="legend"><span style="--c:var(--s2)">학업성취 경유</span><span style="--c:var(--s2b)">자기효능감 경유</span></div>
+      <div class="forest" id="forest"></div>
+      <div class="forest-axis" aria-hidden="true"><span></span><div class="ticks" id="forestTicks"></div><span></span></div>
+    </div>
+    <div class="grid g3" style="margin-top:20px">
+      <div class="note">문화 교육은 개별 경로가 유의하지 않아도 간접 경로는 유의하다 — 계수 하나만 보고 <b>어떤 영역도 제외해서는 안 된다</b>.</div>
+      <div class="note">언어적응 교육은 두 매개변수 모두와 관련된다 (<span class="num">.284 · .216</span>) — 사전 준비는 <b>언어가 먼저</b>.</div>
+      <div class="note warn">취업의도는 취업이 아니며, 지각된 학업성취는 성적이 아니다.</div>
+    </div>
+    <p class="source">제3장 §3.6.3, 표 3.5 (pp. 71–72); 그림 3.1 (p. 62); §3.6.4, 표 3.6 (pp. 72–73); §3.7 (pp. 74–77)</p>
+  </div>
+</section>
+
+<!-- 통합 -->
+<section class="block alt" id="integration">
+  <div class="wrap reveal">
+    <div class="kicker">06 · 통합 프레임워크</div>
+    <h2>SER-M으로 읽으면, 각 연구의 핵심 결과는 메커니즘이다</h2>
+    <p class="lead">메커니즘 기반 관점(SER-M; Cho &amp; Lee, 1998; Cho, 2014): 성과는 주체(S), 환경(E), 자원(R)이 메커니즘(M)을 통해 어떻게 결합되는가에 달려 있습니다. 연구 설계 이후 해석의 틀로 적용했습니다.</p>
+    <div class="serm">
+      <div class="h corner"></div><div class="h" style="color:var(--s1)">연구 1</div><div class="h" style="color:var(--s2)">연구 2</div>
+      <div class="k"><b>S</b>주체</div><div class="c1">대학 및 유학원의 유치 종사자와 관리자</div><div class="c2">입학 전 사전교육을 받은 외국인 유학생</div>
+      <div class="k"><b>E</b>환경</div><div class="c1">정책 목표, 비자 규정, 송출국 내 경쟁</div><div class="c2">유학국의 언어, 학업 문화, 노동시장</div>
+      <div class="k"><b>R</b>자원</div><div class="c1">다섯 가지 영업역량</div><div class="c2">문화적응·사회적응·언어적응 교육</div>
+      <div class="k"><b>M</b>메커니즘</div><div class="c1 mech">성과관리 시스템 · 교육훈련 지원</div><div class="c2 mech">지각된 학업성취 · 자기효능감</div>
+    </div>
+    <div class="grid g2" style="margin-top:20px">
+      <div class="note"><b>가중치(기술적 해석)</b> — 역량 중 관계구축이 가장 크고 (<span class="num">β = 0.291; 0.268</span>), 교육 영역 중 언어 교육이 가장 크다 (<span class="num">β = .284; .216</span>).</div>
+      <div class="note"><b>순서</b> — 규모보다 메커니즘이 먼저, 다른 영역보다 언어가 먼저. 세 번째 메커니즘인 유치–교육 간 조정은 제안이며 검증하지 않았다.</div>
+    </div>
+
+    <h3 style="margin-top:56px">인과 루프 다이어그램이 두 연구와 SDG 분석을 연결한다</h3>
+    <p class="lead" style="margin-bottom:20px">각 연구는 한 방향의 모형을 추정하지만, 서비스 시스템에는 피드백이 있습니다. 두 연구를 잇는 변수는 <b>정보 정확성과 학생–프로그램 적합성</b>입니다.</p>
+    <div class="split">
+      <figure class="cld">
+        <a href="images/causal-loop-diagram.png" target="_blank" rel="noopener" title="원본 크기로 보기"><img src="images/causal-loop-diagram.png" width="1727" height="1309" loading="lazy"
+             alt="인과 루프 다이어그램. 위쪽 연구 1 블록: 유치 종사자의 영업역량이 성과관리 시스템과 교육훈련 지원을 거쳐 유치(등록) 성과로 이어진다. 아래쪽 연구 2 블록: 입학 전 사전교육이 지각된 학업성취와 자기효능감을 거쳐 취업의도로 이어진다. 점선으로 등록 외국인 유학생, 기관 자원, 기관 평판과 규제상 지위, 직원 1인당 지원 부담, 졸업 후 취업·정주, 정보 정확성과 학생–프로그램 적합성이 연결되어 R1, R2 강화 루프와 B1 균형 루프를 이룬다." /></a>
+        <figcaption>그림을 누르면 원본 크기로 볼 수 있습니다 · 실선: 검증된 경로 · 점선: 제안된 연결(검증하지 않음) · R 강화 루프 · B 균형 루프</figcaption>
+      </figure>
+      <div class="grid">
+        <div class="card loop r"><span class="tag">R1</span><h3>역량 재투자</h3><p>유치성과 → 등록 유학생 → 기관 자원 → 교육훈련 및 교육 → 성과.</p></div>
+        <div class="card loop r"><span class="tag">R2</span><h3>평판 (느림)</h3><p>교육 → 학업성취·자기효능감 → 취업의도 → 졸업 후 취업 → 평판과 규제상 지위 → 유치. 여러 해가 걸린다.</p></div>
+        <div class="card loop b"><span class="tag">B1</span><h3>지원 수용력</h3><p>학생 증가 → 직원 1인당 지원 부담 증가 → 학업성취 약화. 성장에는 한계가 있다.</p></div>
+      </div>
+    </div>
+    <p class="source">제1장 §1.1, 표 1.2 (p. 7), 표 1.3 (p. 14), 그림 1.1 (p. 11), pp. 6–12; 제4장 §4.3, 표 4.2 (p. 90)</p>
+  </div>
+</section>
+
+<!-- SDG -->
+<section class="block" id="sdg">
+  <div class="wrap reveal">
+    <div class="kicker">07 · 지속가능발전목표</div>
+    <h2>연구 결과는 SDG 4, 8, 10, 17과 개념적으로 연결된다</h2>
+    <p class="lead">측정된 영향이 아닌 개념적 연결입니다. 세부목표 16.6(책임 있는 제도)은 윤리경영의 전제 조건으로 언급합니다.</p>
+    <div class="grid g4">
+      <article class="card sdg" style="--sdg:#c5192d"><div class="no">SDG 4</div><h3>양질의 교육</h3><p class="tgt">세부목표 4.3, 4.4, 4.7</p><p>연구 2는 사전교육과 지각된 학업성취를 측정한다.</p><div class="meter" data-v="5"><span>5 / 5 · 직접적</span></div></article>
+      <article class="card sdg" style="--sdg:#a21942"><div class="no">SDG 8</div><h3>양질의 일자리와 경제성장</h3><p class="tgt">세부목표 8.5, 8.6</p><p>학업성취와 자기효능감은 취업의도와 관련된다.</p><div class="meter" data-v="4"><span>4 / 5 · 간접적</span></div></article>
+      <article class="card sdg" style="--sdg:#dd1367"><div class="no">SDG 10</div><h3>불평등 감소</h3><p class="tgt">세부목표 10.7</p><p>정확하고 접근 가능한 정보와 지원은 책임 있는 이동의 일부이다.</p><div class="meter" data-v="3"><span>3 / 5 · 맥락적</span></div></article>
+      <article class="card sdg" style="--sdg:#2d6a9f"><div class="no">SDG 17</div><h3>목표 달성을 위한 파트너십</h3><p class="tgt">세부목표 17.17</p><p>연구 1에서 관계구축의 계수가 가장 크다.</p><div class="meter" data-v="3"><span>3 / 5 · 맥락적</span></div></article>
+    </div>
+    <div class="note" style="margin-top:20px">점수는 개념적 근접성에 대한 저자의 서열적 판단입니다. 공식 SDG 지표는 측정하지 않았으며, 대신 사전 준비 이수율·1학년 진급률 등 <b>기준선을 각 기관이 설정해야 하는 기관 수준 지표</b>를 제안합니다 (표 4.7).</div>
+    <p class="source">제4장 §4.2 (pp. 86–88), 표 4.1 (p. 87); §4.6, 표 4.6 (p. 99), 표 4.7 (p. 100); United Nations (2015)</p>
+  </div>
+</section>
+
+<!-- 윤리 · AI -->
+<section class="block alt" id="ethics">
+  <div class="wrap reveal">
+    <div class="kicker">08 · 윤리경영과 AI</div>
+    <h2>윤리경영은 안전장치이며, AI는 감독 아래 이루어질 장래의 변화로 다룬다</h2>
+    <p class="lead">유학생 유치는 정보 비대칭 아래의 교환입니다. 기관이 인원수에 보상을 주면 인원수를 얻게 됩니다. 그래서 윤리경영을 선언문이 아니라 <b>하나의 경영 시스템</b>으로 다룹니다.</p>
+    <div class="split">
+      <div class="table-wrap" style="min-width:0">
+        <div class="risk h"><div>윤리적 위험</div><div>안전장치</div></div>
+        <div class="risk"><div>오해를 부르거나 불완전한 정보</div><div>프로그램별 검증된 정보 안내서 1부; 지원자의 이해 여부 기록</div></div>
+        <div class="risk"><div>인원수만을 기준으로 한 인센티브와 수수료</div><div>균형 잡힌 지표; 수수료 공개; 부적합한 지원자를 거절해도 불이익 없음</div></div>
+        <div class="risk"><div>사전 준비와 지원에 대한 불평등한 접근</div><div>유치 경로와 무관하게 사전 준비 제공; 접근성 점검</div></div>
+        <div class="risk"><div>개인정보 오용; 학생에 대한 낙인</div><div>목적 제한과 동의; 점수는 대화의 출발점일 뿐 선발 기준이 아님</div></div>
+      </div>
+      <div class="card">
+        <h3>AI를 적용한다면</h3>
+        <p style="margin:12px 0 6px;font-weight:700;color:var(--accent);font-size:14px">예상되는 변화</p>
+        <ul class="clean">
+          <li>다국어 안내: 모든 지원자에게 입국 전 정확한 정보 제공</li>
+          <li>AI 기반 학문 목적 한국어 연습으로 언어 준비 확장</li>
+          <li>조기 경보로 지원 수용력 한계(B1) 완화</li>
+        </ul>
+        <p style="margin:16px 0 6px;font-weight:700;color:var(--warn);font-size:14px">위험</p>
+        <p style="margin:0;color:var(--ink-2);font-size:15px">권위 있는 어조로 제시되는 잘못된 비자·등록금 안내; 편향; 프라이버시</p>
+        <p style="margin:16px 0 6px;font-weight:700;font-size:14px">조건</p>
+        <p style="margin:0;color:var(--ink-2);font-size:15px">중대한 결정에 대한 사람의 검토. 두 설문 어디에서도 검증하지 않았다.</p>
+      </div>
+    </div>
+    <p class="source">제4장 §4.4, 표 4.3 (pp. 92–95); §4.3 (p. 91); §4.5 전략 6–7 (p. 96); 제5장 §5.1 (pp. 106–107)</p>
+  </div>
+</section>
+
+<!-- 경영 전략 -->
+<section class="block" id="strategy">
+  <div class="wrap reveal">
+    <div class="kicker">09 · 경영 전략</div>
+    <h2>규모보다 메커니즘이 먼저: 가중치와 순서를 갖춘 여섯 단계</h2>
+    <p class="lead">계수는 기술적인 것이며 비용 효과성의 척도가 아닙니다. 기관을 위한 출발 가설이며, 환경이 다르면 가중치도 달라집니다.</p>
+    <div class="steps">
+      <article class="card"><h3>기반</h3><p>윤리 기준, 역할 명확화, 환경 탐색 — 이후 모든 단계가 정보의 질을 물려받는다.</p><div class="tags"><span class="pill">S · E</span><span class="pill ac">SDG 10, 17</span></div></article>
+      <article class="card"><h3>조직 메커니즘</h3><p>성과 평가 (<span class="num">β = 0.435</span>)를 교육훈련 (<span class="num">β = 0.373</span>)보다 먼저 — 등록 목표를 높이기 전에 갖춘다.</p><div class="tags"><span class="pill s1">M · 연구 1</span><span class="pill ac">SDG 17</span></div></article>
+      <article class="card"><h3>사전 준비</h3><p>언어적응을 먼저 (<span class="num">β = .284; .216</span>), 사회·문화 내용을 결합한다.</p><div class="tags"><span class="pill s2">R · 연구 2</span><span class="pill ac">SDG 4</span></div></article>
+      <article class="card"><h3>인계와 지원</h3><p>동의 기반 인계와 재학 중 지원. 학업성취가 세 영역 모두를 매개한다 (<span class="num">.029 ~ .068</span>).</p><div class="tags"><span class="pill">M · 제안</span><span class="pill ac">SDG 4, 10</span></div></article>
+      <article class="card"><h3>진로 사후관리</h3><p>학업성취와 자기효능감에 대한 상담; 확인된 진로 현황을 의도와 구분해 기록한다.</p><div class="tags"><span class="pill">R · M</span><span class="pill ac">SDG 8</span></div></article>
+      <article class="card"><h3>기술 시범 운영</h3><p>범위를 한정한 AI 시범 운영; 루프와 지표의 주기적 점검.</p><div class="tags"><span class="pill">E · M</span><span class="pill ac">SDG 4, 10</span></div></article>
+    </div>
+    <p class="source">제4장 §4.5 경영 전략 (pp. 95–98), 표 4.5 (p. 98); 표 4.4 (p. 97)</p>
+  </div>
+</section>
+
+<!-- 결론 -->
+<section class="block alt" id="conclusion">
+  <div class="wrap reveal">
+    <div class="kicker">10 · 결론</div>
+    <h2>본 논문이 뒷받침하는 것, 그리고 증거가 멈추는 지점</h2>
+    <p class="lead">경영적 시사점: 성과는 주체, 환경, 자원을 <b>어떻게 결합하느냐</b>에서 나옵니다.</p>
+    <div class="grid g2 concl">
+      <div class="card ok">
+        <h3>지지되는 결론</h3>
+        <ul class="clean">
+          <li>다섯 역량은 성과관리와, 네 역량은 교육훈련 지원과 관련되며, 두 매개변수 모두 유치성과와 관련된다.</li>
+          <li>언어 교육은 학생 수준의 두 매개변수 모두와 관련되며, 학업성취는 세 교육 영역 모두를 매개한다.</li>
+          <li>통합 프레임워크: 메커니즘(SER-M), 피드백 루프, 윤리적 안전장치, SDG 4·8·10·17과 연계된 지표.</li>
+        </ul>
+      </div>
+      <div class="card lim">
+        <h3>증거의 한계</h3>
+        <ul class="clean">
+          <li>횡단면 자기보고 자료: 관련성일 뿐 인과효과가 아니다.</li>
+          <li>서로 다른 두 표본: 통합 모형이나 종단 모형은 없다.</li>
+          <li>의도는 취업이 아니며, 지각된 학업성취는 성적이 아니다.</li>
+          <li>SER-M 분류, 가중치, 점선 연결, 루프는 해석적인 것이며 검증하지 않았다.</li>
+          <li>SDG 지표, 윤리 풍토, AI 개입은 어느 것도 측정하지 않았다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:56px">향후 과제: 프레임워크가 제안한 연결을 검증한다</h3>
+    <div class="future" style="margin-top:16px">
+      <div class="card"><div class="n">01</div><h3>종단 및 연계 설계</h3><p>사전 준비부터 졸업까지 학생을 추적하고, 각 학생을 유치 기관과 연계</p></div>
+      <div class="card"><div class="n">02</div><h3>시스템 다이내믹스 시뮬레이션</h3><p>유치 파이프라인, 직원 역량, 지원 수용력, 평판의 저량–유량 모형</p></div>
+      <div class="card"><div class="n">03</div><h3>윤리경영의 측정</h3><p>윤리 풍토, 목표 압박, 수수료 구조를 조절변수로 설정</p></div>
+      <div class="card"><div class="n">04</div><h3>AI 현장 연구</h3><p>다국어 안내, 학문 목적 한국어 연습, 편향 감사를 갖춘 조기 경보 모형</p></div>
+      <div class="card"><div class="n">05</div><h3>SDG 지향 후속 연구</h3><p>졸업생 추적 조사; 출신국·경로별 접근성; 학생 성과로 평가하는 파트너십</p></div>
+    </div>
+    <p class="source">제5장 §5.2, 표 5.1 (p. 108), pp. 107–110; §5.3 (pp. 110–112); 제4장 §4.7 (pp. 103–104), 표 4.8 (p. 102)</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>외국인 유학생 유치와 입학 전 사전교육 성과에 관한 통합적 연구</b><br />Yohan Hwang · DBA, SDG Management School · Ph.D., aSSIST University · 지도교수 Bo Young Kim</div>
+    <div>모든 수치는 박사학위논문 심사 발표 자료 기준입니다.<br /><a href="#top">맨 위로 ↑</a></div>
+  </div>
+</footer>
+
+<script>
+  // 연구 1·2 계수 (발표 자료 차트 원자료)
+  var S1 = {
+    series: ['var(--s1)', 'var(--s1b)'], names: ['성과관리 시스템', '교육훈련 지원'],
+    rows: [
+      ['의사소통', [0.216, 0.160]], ['문제해결', [0.183, 0.214]], ['고객관리', [0.222, [0.090, 'ns']]],
+      ['관계구축', [0.291, 0.268]], ['환경대응', [0.166, 0.126]],
+    ],
+  }
+  var S2 = {
+    series: ['var(--s2)', 'var(--s2b)'], names: ['지각된 학업성취', '자기효능감'],
+    rows: [
+      ['문화적응', [[0.109, 'ns'], [0.078, 'ns']]], ['사회적응', [0.143, [0.119, 'ns']]], ['언어적응', [0.284, 0.216]],
+    ],
+  }
+  function fmt(v) { return v.toFixed(3).replace(/^0/, '') }
+  function drawBars(el, d) {
+    var max = parseFloat(el.dataset.max)
+    el.innerHTML = d.rows.map(function (r) {
+      return '<div class="row"><div class="lab">' + r[0] + '</div><div class="bars">' + r[1].map(function (x, i) {
+        var ns = Array.isArray(x), v = ns ? x[0] : x
+        return '<div class="bar' + (ns ? ' ns' : '') + '" role="img" aria-label="' + r[0] + ' → ' + d.names[i] + ' β ' + fmt(v) + (ns ? ', 유의하지 않음' : '') + '">' +
+          '<i data-w="' + (v / max * 100) + '" style="background:' + d.series[i] + '"></i><span class="num">' + fmt(v) + (ns ? ' n.s.' : '') + '</span></div>'
+      }).join('') + '</div></div>'
+    }).join('')
+  }
+  drawBars(document.getElementById('chart1'), S1)
+  drawBars(document.getElementById('chart2'), S2)
+
+  // 연구 2 간접효과 (표 3.6)
+  var F = [
+    ['문화적응', '학업성취', .029, .003, .064, 0], ['사회적응', '학업성취', .039, .007, .087, 0], ['언어적응', '학업성취', .068, .029, .122, 0],
+    ['문화적응', '자기효능감', .018, -.009, .057, 1], ['사회적응', '자기효능감', .029, -.001, .078, 1], ['언어적응', '자기효능감', .046, .014, .096, 1],
+  ]
+  var lo = -0.02, hi = 0.13
+  function pos(v) { return ((v - lo) / (hi - lo) * 100).toFixed(2) + '%' }
+  var colors = ['var(--s2)', 'var(--s2b)']
+  document.getElementById('forest').innerHTML = F.map(function (f) {
+    var sig = f[3] > 0
+    return '<div class="fr" role="img" aria-label="' + f[0] + ', ' + f[1] + ' 경유 간접효과 ' + fmt(f[2]) + ', 95% 신뢰구간 ' + fmt(f[3]) + ' ~ ' + fmt(f[4]) + (sig ? ', 유의함' : ', 유의하지 않음') + '">' +
+      '<div class="fl">' + f[0] + '<small>' + f[1] + ' 경유</small></div>' +
+      '<div class="track"><div class="zero" style="left:' + pos(0) + '"></div>' +
+      '<div class="ci" style="left:' + pos(f[3]) + ';width:calc(' + pos(f[4]) + ' - ' + pos(f[3]) + ');background:' + colors[f[5]] + ';' + (sig ? '' : 'opacity:.45') + '"></div>' +
+      '<div class="pt" style="left:' + pos(f[2]) + ';background:' + colors[f[5]] + ';' + (sig ? '' : 'opacity:.55') + '"></div></div>' +
+      '<div class="fv num"><b>' + fmt(f[2]) + '</b> ' + (sig ? '<span class="sig">유의</span>' : '<span class="nsig">n.s.</span>') + '<br />[' + fmt(f[3]) + ', ' + fmt(f[4]) + ']</div></div>'
+  }).join('')
+  document.getElementById('forestTicks').innerHTML = [0, .04, .08, .12].map(function (t) {
+    return '<span style="left:' + pos(t) + '">' + (t ? t.toFixed(2).replace(/^0/, '') : '0') + '</span>'
+  }).join('')
+
+  // SDG 관련성 막대
+  document.querySelectorAll('.meter').forEach(function (m) {
+    var v = +m.dataset.v, h = ''
+    for (var i = 0; i < 5; i++) h += '<i class="' + (i < v ? 'on' : '') + '"></i>'
+    m.insertAdjacentHTML('afterbegin', h)
+  })
+
+  // 스크롤 등장 효과 + 막대 애니메이션
+  function grow(scope) { scope.querySelectorAll('.bar i').forEach(function (i) { i.style.width = i.dataset.w + '%' }) }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); grow(e.target); io.unobserve(e.target) } })
+    }, { threshold: 0.08 })
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el) })
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); grow(el) })
+  }
+
+  // 현재 섹션 표시
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav .links a'))
+  if ('IntersectionObserver' in window) {
+    var nio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return
+        links.forEach(function (a) {
+          var on = a.getAttribute('href') === '#' + e.target.id
+          a.classList.toggle('on', on)
+          if (on && a.scrollIntoView) a.parentNode.scrollTo({ left: a.offsetLeft - 40, behavior: 'smooth' })
+        })
+      })
+    }, { rootMargin: '-45% 0px -50% 0px' })
+    document.querySelectorAll('section.block').forEach(function (s) { nio.observe(s) })
+  }
+
+  // 테마 전환 (선택은 이 브라우저에만 저장)
+  var root = document.documentElement
+  try { var saved = localStorage.getItem('research-theme'); if (saved) root.dataset.theme = saved } catch (e) {}
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches
+    root.dataset.theme = dark ? 'light' : 'dark'
+    try { localStorage.setItem('research-theme', root.dataset.theme) } catch (e) {}
+  })
+</script>
+</body>
+</html>

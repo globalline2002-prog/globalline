@@ -80,6 +80,19 @@ npm start                 # 사이트 빌드 + 서버 실행 → http://localhos
 
 예: `https://<도메인>/?partner=VN-HANOI&utm_source=zalo&lang=vi#/consult/form`
 
+## 연구 소개 사이트 (`public/research/`)
+
+박사학위논문 「외국인 유학생 유치와 입학 전 사전교육 성과에 관한 통합적 연구」를 소개하는 단일 페이지입니다.
+빌드 도구 없이 HTML 한 파일(+ 인과 루프 그림)로 되어 있어 어디에나 그대로 올릴 수 있습니다.
+
+| 배포 방법 | 주소 | 설정 |
+| --- | --- | --- |
+| GitHub Pages (자동) | `https://globalline2002-prog.github.io/globalline/` | 최초 1회 저장소 **Settings → Pages → Source: GitHub Actions** 선택. 이후 `main`에 `public/research/` 변경이 푸시되면 `.github/workflows/deploy-research.yml`이 자동 배포 (Actions 탭에서 수동 실행도 가능) |
+| 내장 서버와 함께 | `https://<도메인>/research/` | `npm start` 만으로 함께 서빙됨 (Vite가 `public/`을 `dist/`로 복사) |
+| Netlify · Vercel · Cloudflare Pages | 서비스가 발급한 주소 | 게시 폴더(Publish directory)를 `public/research`, 빌드 명령은 비움 |
+
+수치·문구는 `public/research/index.html` 에서 바로 수정합니다. 연구 1·2 막대 차트와 간접효과 그림의 값은 파일 하단 `<script>`의 `S1`, `S2`, `F` 배열에 있습니다.
+
 ## 기술 스택
 
 React 19 · Vite · Tailwind CSS 4 · qrcode · Node.js 내장 서버(의존성 없음)

@@ -1,0 +1,40 @@
+name: Deploy research site (GitHub Pages)
+
+# 연구 소개 사이트(public/research/)를 GitHub Pages 로 배포합니다.
+# 최초 1회: 저장소 Settings → Pages → Build and deployment → Source 를 "GitHub Actions" 로 설정하세요.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/research/**'
+      - '.github/workflows/deploy-research.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public/research
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
